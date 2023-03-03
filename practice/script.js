@@ -11,13 +11,15 @@ const DECREMENT = "decrement";
 
 // action creators
 
-const increment = (value) => {
+const increment = () => {
+  const value = parseInt(document.getElementById("increment-value").value) || 0;
   return {
     type: INCREMENT,
     payload: value,
   };
 };
-const decrement = (value) => {
+const decrement = () => {
+  const value = parseInt(document.getElementById("decrement-value").value) || 0;
   return {
     type: DECREMENT,
     payload: value,
@@ -56,11 +58,11 @@ const store = Redux.createStore(reducer);
 // button click listeners
 
 incrementEl.addEventListener("click", () => {
-  store.dispatch(increment(5));
+  store.dispatch(increment());
 });
 
 decrementEl.addEventListener("click", () => {
-  store.dispatch(decrement(3));
+  store.dispatch(decrement());
 });
 
 // render
